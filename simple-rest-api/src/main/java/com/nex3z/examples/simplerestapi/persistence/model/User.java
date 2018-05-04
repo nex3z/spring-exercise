@@ -1,19 +1,20 @@
 package com.nex3z.examples.simplerestapi.persistence.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity @Data
+@Entity @Data @EqualsAndHashCode(exclude = "notes")
 public class User {
 
     @Id @GeneratedValue
     private Long id;
 
+    @Column(unique = true, nullable = false)
     private String name;
 
     @JsonIgnore
