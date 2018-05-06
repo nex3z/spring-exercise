@@ -14,7 +14,7 @@ public class User {
     @Id @GeneratedValue
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, length = 64, nullable = false)
     private String name;
 
     @JsonIgnore
