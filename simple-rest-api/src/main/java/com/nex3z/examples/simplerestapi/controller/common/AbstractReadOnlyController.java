@@ -4,7 +4,7 @@ import com.google.common.base.Preconditions;
 import com.nex3z.examples.simplerestapi.controller.exception.ResourceNotFoundException;
 import com.nex3z.examples.simplerestapi.controller.util.RestPrecondition;
 import com.nex3z.examples.simplerestapi.persistence.common.IEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.nex3z.examples.simplerestapi.service.common.IService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -13,7 +13,7 @@ public abstract class AbstractReadOnlyController<T extends IEntity> {
 
     protected final Class<T> clazz;
 
-    protected abstract JpaRepository<T, Long> getRepository();
+    protected abstract IService<T> getService();
 
     public AbstractReadOnlyController(final Class<T> clazz) {
         super();
@@ -22,7 +22,7 @@ public abstract class AbstractReadOnlyController<T extends IEntity> {
     }
 
     protected final T findOneInternal(final Long id) {
-        return RestPrecondition.checkNotNull(getRepository().getOne(id),
+        return RestPrecondition.checkNotNull(getService().findOne(id),
                 clazz.getSimpleName() + "with id" + id + "not found");
     }
 
@@ -30,7 +30,7 @@ public abstract class AbstractReadOnlyController<T extends IEntity> {
         if (request.getParameterNames().hasMoreElements()) {
             throw new ResourceNotFoundException();
         }
-        return getRepository().findAll();
+        return getService().findAll();
     }
 
 }

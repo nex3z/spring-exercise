@@ -2,6 +2,7 @@ package com.nex3z.examples.simplerestapi.persistence.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.nex3z.examples.simplerestapi.persistence.common.IEntity;
+import com.nex3z.examples.simplerestapi.persistence.common.IHasName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -10,7 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity @Data @EqualsAndHashCode(exclude = "notes")
-public class User implements IEntity {
+public class User implements IEntity, IHasName {
 
     @Id @GeneratedValue
     private Long id;

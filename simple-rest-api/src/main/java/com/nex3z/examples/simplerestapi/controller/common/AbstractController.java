@@ -12,7 +12,7 @@ public abstract class AbstractController<T extends IEntity> extends AbstractRead
     protected final void createInternal(final T resource) {
         RestPrecondition.checkRequestElementNotNull(resource);
         RestPrecondition.checkRequestState(resource.getId() == null);
-        getRepository().save(resource);
+        getService().create(resource);
     }
 
 }
