@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_generic_services = true;
+package com.nex3z.examples.simplegrpcserver;
+
+message Note {
+    int64 id = 1;
+    string content = 2;
+}
+
+message NoteList {
+    repeated Note note = 1;
+}
+
+service NoteService {
+    rpc addNote(Note) returns (Note);
+}
