@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.nex3z.examples.springes";
+option java_outer_classname = "AccountProto";
+option objc_class_prefix = "ACT";
+
+package account;
+
+message Account {
+    int64 accountNumber = 1;
+    string balance = 2;
+    string firstname = 3;
+    string lastname = 4;
+    int32 age = 5;
+    string gender = 6;
+    string address = 7;
+    string employer = 8;
+    string email = 9;
+    string city = 10;
+    string state = 11;
+}
+
+service AccountService {
+    rpc GetAccountById (GetAccountByIdRequest) returns (AccountResponse) {}
+}
+
+message GetAccountByIdRequest {
+    int64 id = 1;
+}
+
+message AccountResponse {
+    repeated Account accounts = 1;
+}
