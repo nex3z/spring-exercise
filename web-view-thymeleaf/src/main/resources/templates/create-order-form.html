@@ -1,0 +1,32 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h2>Book List</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Book Title</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${bookList}">
+        <td th:text="${book.title}">Dune</td>
+        <td th:text="${book.price}">USD 10.99</td>
+    </tr>
+    </tbody>
+</table>
+<h2>Your Order</h2>
+<form action="#" th:action="@{/order/}" method="post">
+    <label>Customer Name</label>
+    <input type="text" name="customer" />
+    <ul>
+        <li th:each="book : ${bookList}">
+            <input type="checkbox" name="items" th:value="${book.title}" />
+            <label th:text="${book.title}">Dune</label>
+        </li>
+    </ul>
+    <input type="submit" value="Submit"/>
+    <p th:text="${message}">Message</p>
+</form>
+</body>
+</html>
