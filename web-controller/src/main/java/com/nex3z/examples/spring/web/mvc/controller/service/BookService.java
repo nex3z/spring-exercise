@@ -45,4 +45,8 @@ public class BookService {
         return bookRepository.findByTitleInOrderById(titles);
     }
 
+    public long getBookCount() {
+        return bookRepository.count();
+    }
+
 }
