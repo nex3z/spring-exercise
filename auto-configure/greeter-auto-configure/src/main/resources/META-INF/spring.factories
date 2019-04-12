@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.nex3z.examples.spring.greeter.autoconfigure.GreetingAutoConfiguration
